@@ -1,8 +1,9 @@
 import React from 'react';
-import { Text, SafeAreaView } from 'react-native';
+import { SafeAreaView } from 'react-native';
+import Home from './src/telas/home';
 
 export default function App() {
   return  <SafeAreaView>
-            <Text>Teste</Text>
+            <Home />
           </SafeAreaView>
 }  
