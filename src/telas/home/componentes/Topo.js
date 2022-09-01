@@ -5,22 +5,30 @@ import logo from "../../../assets/logo.png";
 import { carregaTopo } from "../../../services/loadInformation";
 
 class Topo extends React.Component {
-    atualizaTopo() {
-        const retorno = carregaTopo();
-        console.log(retorno);
+
+    state = {
+        topo: {
+            boasVindas: '',
+            legenda: '',
+        }
     }
 
+    atualizaTopo() {
+        const retorno = carregaTopo();
+        this.setState({ topo: retorno })
+    }
+
+    // carrega dados apenas uma vez
     componentDidMount() {
         this.atualizaTopo();
     }
-
-
-
+    
+    // renderizar tela
     render() {
         return  <View style={estilos.topo}>
                 <Image source={logo} style={estilos.imagem}/>
-                <Text style={estilos.boaVindas}>Olá!</Text>
-                <Text style={estilos.legenda}>Encontra os melhores produtores</Text>
+                <Text style={estilos.boasVindas}>{this.state.topo.boasVindas}</Text>
+                <Text style={estilos.legenda}>{this.state.topo.legenda}</Text>
             </View>
     }
 }
@@ -34,7 +42,7 @@ const estilos = StyleSheet.create({
         width: 70,
         height: 28,
     },
-    boaVindas: {
+    boasVindas: {
         fontWeight: "bold",
         fontSize: 26,
         marginTop: 24,
