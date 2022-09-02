@@ -22,13 +22,14 @@ class Topo extends React.Component {
     componentDidMount() {
         this.atualizaTopo();
     }
-    
+
     // renderizar tela
     render() {
+        const { boasVindas, legenda } = this.state.topo
         return  <View style={estilos.topo}>
                 <Image source={logo} style={estilos.imagem}/>
-                <Text style={estilos.boasVindas}>{this.state.topo.boasVindas}</Text>
-                <Text style={estilos.legenda}>{this.state.topo.legenda}</Text>
+                <Text style={estilos.boasVindas}>{boasVindas}</Text>
+                <Text style={estilos.legenda}>{legenda}</Text>
             </View>
     }
 }
@@ -47,11 +48,13 @@ const estilos = StyleSheet.create({
         fontSize: 26,
         marginTop: 24,
         lineHeight: 42,
+        color: '#464646'
         
     },
     legenda: {
         fontSize: 16,
         lineHeight: 26,
+        color: '#A3A3A3'
     }
 })
 
