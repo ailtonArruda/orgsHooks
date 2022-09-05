@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, Text, StyleSheet } from 'react-native';
-import { carregaProdutores } from '../../../services/loadInformation';
 
+import { carregaProdutores } from '../../../services/loadInformation';
+import Produtor from './Produtor';
 
 export default function Produtores() {
     // criação de estado que será apagado quando a aplicação for fechada
@@ -22,8 +23,7 @@ export default function Produtores() {
 
     return <FlatList
                 data={lista}
-                            // descontrução do objeto passado como parametro
-                renderItem={({ item: { nome }}) => <Text>{ nome }</Text>}
+                renderItem={({ item }) => <Produtor {...item} />}
                 keyExtractor={({nome}) => nome}
                 ListHeaderComponent={ topoLista }/>
 }
